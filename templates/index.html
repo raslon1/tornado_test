@@ -1,0 +1,18 @@
+<html>
+  <head>
+<title>{{ title }}</title>
+<link rel="stylesheet" type="text/css" href="{{ static_url("css/style.css")}}"/>
+</head>
+      <body>
+      <div class="hed"><h2>Главная страница</h2></div>
+      
+      <div class="cont">
+        <ol class="rounded">
+          {% for page_n in pages %}
+          <li><a href="{{reverse_url('page', page_n)}}">{{ pages[page_n]['title'] }}</a></li>
+          {% end %}
+        </ol>
+      </div>
+      
+      </body>
+</html>

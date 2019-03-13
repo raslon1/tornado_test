@@ -1,0 +1,26 @@
+﻿CREATE TABLE IF NOT EXISTS Asset(
+	id serial primary key,
+	name varchar not null);
+
+CREATE TABLE IF NOT EXISTS Well(
+	id serial primary key,
+	asset_id integer,
+	name varchar,
+	X double precision,
+	Y double precision,
+	FOREIGN key(asset_id) REFERENCES Asset(id));
+
+CREATE TABLE IF NOT EXISTS Layer(
+	id serial primary key,
+	asset_id integer,
+	name varchar,
+	FOREIGN key(asset_id) REFERENCES Asset(id));
+
+CREATE TABLE IF NOT EXISTS Intersection(
+	id serial primary key,
+	well_id integer,
+	layer_id integer,
+	X double precision,
+	Y double precision,
+	FOREIGN key(well_id) REFERENCES Well(id),
+	FOREIGN key(layer_id) REFERENCES Layer(id));
